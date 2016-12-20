@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CoffeeAndCode.Base;
 using CoffeeAndCode.Domain.DbContexts;
@@ -28,9 +29,11 @@ namespace CoffeeAndCode.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<User> Get(string id)
         {
-            return "value";
+            Guid idGuid;
+            if(!Guid.TryParse(id, out idGuid)) { return new User(); }
+            return await _context.Users.SingleOrDefaultAsync(usr => usr.Id == idGuid);
         }
 
         // POST api/values
