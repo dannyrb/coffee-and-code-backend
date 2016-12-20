@@ -17,7 +17,8 @@
     "Swashbuckle": "6.0.0-beta902",
     "CoffeeAndCode.Domain": "1.0.0-*",
     "CoffeeAndCode.Viewmodels": "1.0.0-*",
-    "AutoMapper": "5.2.0"
+    "AutoMapper": "5.2.0",
+    "AutoMapper.Extensions.Microsoft.DependencyInjection": "1.1.2"
   },
 
   "tools": {
