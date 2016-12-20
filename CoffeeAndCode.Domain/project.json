@@ -27,6 +27,10 @@
     }
   },
 
+  "runtimes": {
+    "win10-x64": {}
+  },
+
   "buildOptions": {
     "emitEntryPoint": true,
     "preserveCompilationContext": true
