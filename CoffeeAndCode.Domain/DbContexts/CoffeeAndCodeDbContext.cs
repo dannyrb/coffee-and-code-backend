@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CoffeeAndCode.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoffeeAndCode.Domain.DbContexts
 {
@@ -8,13 +9,13 @@ namespace CoffeeAndCode.Domain.DbContexts
             {
         }
 
-        //public DbSet<Course> Courses { get; set; }
+        public DbSet<User> Users { get; set; }
         //public DbSet<Enrollment> Enrollments { get; set; }
         //public DbSet<Student> Students { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Course>().ToTable("Course");
+            modelBuilder.Entity<User>().ToTable("Users");
             //modelBuilder.Entity<Enrollment>().ToTable("Enrollment");
             //modelBuilder.Entity<Student>().ToTable("Student");
         }
