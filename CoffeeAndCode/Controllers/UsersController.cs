@@ -1,25 +1,29 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using CoffeeAndCode.Base;
 using CoffeeAndCode.Domain.DbContexts;
+using CoffeeAndCode.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoffeeAndCode.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : BaseController
+    public class UsersController : BaseController
     {
-        public ValuesController(CoffeeAndCodeDbContext context)
-            : base()
+        private readonly CoffeeAndCodeDbContext _context;
+
+        public UsersController(CoffeeAndCodeDbContext context)
         {
-            
+            _context = context;
         }
 
 
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<List<User>>  Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _context.Users.ToListAsync();
         }
 
         // GET api/values/5
