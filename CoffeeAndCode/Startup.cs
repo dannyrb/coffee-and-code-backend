@@ -32,6 +32,13 @@ namespace CoffeeAndCode
             services.AddDbContext<CoffeeAndCodeDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            // Configure Environment Settings
+            // Added - uses IOptions<T> for your settings.
+            services.AddOptions();
+
+            // Added - Confirms that we have a home for our DemoSettings
+            services.Configure<LocalSettings>(Configuration.GetSection("LocalSettings"));
+
             // Inject an implementation of ISwaggerProvider with defaulted settings applied
             services.AddSwaggerGen();
         }
@@ -42,7 +49,10 @@ namespace CoffeeAndCode
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            });
 
             // Enable middleware to serve generated Swagger as a JSON endpoint
             app.UseSwagger();
