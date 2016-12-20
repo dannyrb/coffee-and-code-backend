@@ -1,15 +1,12 @@
 ﻿using System.Collections.Generic;
-using CoffeeAndCode.Base;
-using CoffeeAndCode.Domain.DbContexts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoffeeAndCode.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : BaseController
+    public class ValuesController : Controller
     {
-        public ValuesController(CoffeeAndCodeDbContext context)
-            : base()
+        public ValuesController()
         {
             
         }

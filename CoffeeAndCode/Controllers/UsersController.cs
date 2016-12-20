@@ -10,22 +10,10 @@ using Microsoft.EntityFrameworkCore;
 namespace CoffeeAndCode.Controllers
 {
     [Route("api/[controller]")]
-    public class UsersController : BaseController
+    public class UsersController : GenericApiController<User>
     {
-        private readonly CoffeeAndCodeDbContext _context;
-
         public UsersController(CoffeeAndCodeDbContext context)
-        {
-            _context = context;
-        }
-
-
-        // GET api/values
-        [HttpGet]
-        public async Task<List<User>>  Get()
-        {
-            return await _context.Users.ToListAsync();
-        }
+            : base(context) { }
 
         // GET api/values/5
         [HttpGet("{id}")]
@@ -33,7 +21,7 @@ namespace CoffeeAndCode.Controllers
         {
             Guid idGuid;
             if(!Guid.TryParse(id, out idGuid)) { return new User(); }
-            return await _context.Users.SingleOrDefaultAsync(usr => usr.Id == idGuid);
+            return await Context.Users.SingleOrDefaultAsync(usr => usr.Id == idGuid);
         }
 
         // POST api/values
