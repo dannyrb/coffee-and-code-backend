@@ -1,6 +1,5 @@
 ﻿using System;
 using CoffeeAndCode.Domain.Interfaces;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CoffeeAndCode.Domain.Entities
 {

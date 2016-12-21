@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using CoffeeAndCode.Domain.DbContexts;
-using CoffeeAndCode.Domain.Entities;
 using CoffeeAndCode.Domain.Interfaces;
 using CoffeeAndCode.Viewmodels.Interfaces;
 using Microsoft.AspNetCore.Mvc;
