@@ -13,6 +13,12 @@ namespace CoffeeAndCode.Viewmodels.Profiles
                 .ForMember(dest => dest.Name, opt => 
                     opt.MapFrom(src => (src.FirstName ?? "") + " " + (src.LastName ?? " ")))
                 ;
+
+            CreateMap<User, UserDetailDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id.ToString()))
+                .ForMember(dest => dest.Name, opt => 
+                    opt.MapFrom(src => (src.FirstName ?? "") + " " + (src.LastName ?? " ")))
+                ;
         }
     }
 }
