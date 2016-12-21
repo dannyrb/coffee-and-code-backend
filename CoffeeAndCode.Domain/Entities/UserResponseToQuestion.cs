@@ -3,10 +3,9 @@ using CoffeeAndCode.Domain.Interfaces;
 
 namespace CoffeeAndCode.Domain.Entities
 {
-    public class UserResponseToQuestion: IEntity
+    public class UserResponseToQuestion: ITrackedEntity
     {
         public Guid Id { get; set; }
-        public DateTime CreatedDateTime { get; set; }
 
         // Ref
         public Guid UserId { get; set; }
@@ -17,5 +16,10 @@ namespace CoffeeAndCode.Domain.Entities
 
         public Guid OptionId { get; set; }
         public virtual QuestionOption Option { get; set; }
+
+        //
+        public DateTime CreatedDateTime { get; set; }
+        public DateTime LastModifiedDateTime { get; set; }
+        public DateTime? DeletedDateTime { get; set; }
     }
 }

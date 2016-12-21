@@ -3,7 +3,7 @@ using CoffeeAndCode.Domain.Interfaces;
 
 namespace CoffeeAndCode.Domain.Entities
 {
-    public class User : IEntity
+    public class User : ITrackedEntity
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; }
