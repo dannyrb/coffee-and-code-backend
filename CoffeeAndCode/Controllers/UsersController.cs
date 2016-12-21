@@ -1,29 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using CoffeeAndCode.Base;
 using CoffeeAndCode.Domain.DbContexts;
 using CoffeeAndCode.Domain.Entities;
 using CoffeeAndCode.Viewmodels.Dtos.User;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace CoffeeAndCode.Controllers
 {
     [Route("api/[controller]")]
-    public class UsersController : GenericApiController<User, UserDto>
+    public class UsersController : GenericApiController<User, UserDto, UserDetailDto>
     {
-        public UsersController(CoffeeAndCodeDbContext context)
-            : base(context) { }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public async Task<User> Get(string id)
-        {
-            Guid idGuid;
-            if(!Guid.TryParse(id, out idGuid)) { return new User(); }
-            return await Context.Users.SingleOrDefaultAsync(usr => usr.Id == idGuid);
-        }
+        public UsersController(IMapper mapper, CoffeeAndCodeDbContext context)
+            : base(mapper, context) { }
 
         // POST api/values
         [HttpPost]
