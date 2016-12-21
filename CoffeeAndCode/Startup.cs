@@ -1,4 +1,5 @@
-﻿using CoffeeAndCode.Domain.DbContexts;
+﻿using AutoMapper;
+using CoffeeAndCode.Domain.DbContexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -38,6 +39,10 @@ namespace CoffeeAndCode
 
             // Added - Confirms that we have a home for our DemoSettings
             services.Configure<LocalSettings>(Configuration.GetSection("LocalSettings"));
+
+            // Register AutoMapper
+            // https://lostechies.com/jimmybogard/2016/07/20/integrating-automapper-with-asp-net-core-di/
+            services.AddAutoMapper();
 
             // Inject an implementation of ISwaggerProvider with defaulted settings applied
             services.AddSwaggerGen();
